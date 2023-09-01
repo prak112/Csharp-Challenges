@@ -3,11 +3,12 @@
 .vscode
 
 # build file directories
-fibbonaciNumbers/*
-#/fibbonaciNumbers/bin/Debug/
-#/fibbonaciNumbers/obj/Debug/
-#/fibbonaciNumbers/bin/Release/
-#/fibbonaciNumbers/obj/Release/
+/*/bin/Debug/
+/*/obj/Debug/
+/*/bin/Release/
+/*/obj/Release/
+/*/obj/
+/*/bin/
 
 # build file extensions
 *.pdb

@@ -1,4 +1,7 @@
-﻿namespace FibonacciNumbers
+﻿using System;
+using System.Collections.Generic;
+
+namespace FibonacciNumbers
 {
     public class FibbonaciNumbers
     {
