@@ -24,51 +24,39 @@ string player = states[0];
 // Index of the current food
 int food = 0;
 
+// Initiate Gameplay
 InitializeGame();
-while (!shouldExit) 
+do
 {
-    Move();
-}
+    shouldExit = TerminalResized();
+    Move(shouldExit);
+    ShowFood();
+    ChangePlayer();
+}while (!shouldExit);
 
-// Returns true if the Terminal was resized 
-bool TerminalResized() 
+
+
+#region Methods
+
+// Clears the console, displays the food and player
+void InitializeGame() 
 {
-    return height != Console.WindowHeight - 1 || width != Console.WindowWidth - 5;
-}
-
-// Displays random food at a random location
-void ShowFood() 
-{
-    // Update food to a random index
-    food = random.Next(0, foods.Length);
-
-    // Update food position to a random location
-    foodX = random.Next(0, width - player.Length);
-    foodY = random.Next(0, height - 1);
-
-    // Display the food at the location
-    Console.SetCursorPosition(foodX, foodY);
-    Console.Write(foods[food]);
-}
-
-// Changes the player to match the food consumed
-void ChangePlayer() 
-{
-    player = states[food];
-    Console.SetCursorPosition(playerX, playerY);
+    Console.Clear();
+    ShowFood();
+    Console.SetCursorPosition(0, 0);
     Console.Write(player);
 }
 
-// Temporarily stops the player from moving
-void FreezePlayer() 
-{
-    System.Threading.Thread.Sleep(1000);
-    player = states[0];
-}
-
 // Reads directional input from the Console and moves the player
-void Move() 
+void Move(bool shouldExit) 
 {
+    // close console if Terminal Resized
+    if(shouldExit == true)
+    {
+        TerminateGame();        
+    }
+    
+    // Keep player position within the bounds of the Terminal window
     int lastX = playerX;
     int lastY = playerY;
     
@@ -107,11 +95,54 @@ void Move()
     Console.Write(player);
 }
 
-// Clears the console, displays the food and player
-void InitializeGame() 
+// Returns true if the Terminal was resized 
+bool TerminalResized() 
 {
-    Console.Clear();
-    ShowFood();
-    Console.SetCursorPosition(0, 0);
+    // verify height and width
+    if (height!= Console.WindowHeight - 1 || width!= Console.WindowWidth - 5)   // terminal resized
+    {
+        return true;
+    }
+    return false;
+}
+
+// Displays random food at a random location
+void ShowFood() 
+{
+    // Update food to a random index
+    food = random.Next(0, foods.Length);
+
+    // Update food position to a random location
+    foodX = random.Next(0, width - player.Length);
+    foodY = random.Next(0, height - 1);
+
+    // Display the food at the location
+    Console.SetCursorPosition(foodX, foodY);
+    Console.Write(foods[food]);
+}
+
+// Changes the player to match the food consumed
+void ChangePlayer() 
+{
+    player = states[food];
+    Console.SetCursorPosition(playerX, playerY);
     Console.Write(player);
 }
+
+// Temporarily stops the player from moving
+void FreezePlayer() 
+{
+    System.Threading.Thread.Sleep(4000);
+    player = states[0];
+}
+
+// Terminate game, if terminal resized or user pressed non-directional keys
+void TerminateGame()
+{
+    Console.Clear();    // clear console
+    Console.WriteLine("Console was resized. Program exiting...");
+    Thread.Sleep(2000);  // pause for 2 seconds
+    Environment.Exit(0);    // close game
+}
+
+#endregion
