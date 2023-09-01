@@ -7,8 +7,9 @@
 /*/obj/Debug/
 /*/bin/Release/
 /*/obj/Release/
-/*/obj/
-/*/bin/
+/*/*/obj/
+/*/*/*/obj/
+/*/*/*/bin/
 
 # build file extensions
 *.pdb
