@@ -53,3 +53,9 @@
 - Reading through existing code and debugging
 - Not stalling or getting *'lost in translation'*
 - Do as much as required, Not more.
+
+### Output
+- Completed code [as learner](/miniGame/miniGame-with-missing-features/Starter/Program.cs)
+- Final code [for verification](/miniGame/miniGame-with-missing-features/Final/Program.cs)
+
+<hr>
