@@ -51,5 +51,5 @@
 
 ### Learnings
 - Reading through existing code and debugging
-- Not stalling or getting 'lost in translation'
+- Not stalling or getting *'lost in translation'*
 - Do as much as required, Not more.
