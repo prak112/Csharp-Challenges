@@ -49,3 +49,7 @@
     - Terminate execution if an unsupported key is entered.
     - Terminate execution if the terminal was resized.
 
+### Learnings
+- Reading through existing code and debugging
+- Not stalling or getting 'lost in translation'
+- Do as much as required, Not more.
