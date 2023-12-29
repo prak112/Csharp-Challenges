@@ -12,8 +12,9 @@
     > Output :
     0 1 1 2 3 5
 </code>
+
 - Output excludes '0' during building the series
-- Limitiation :
+- Limitation :
     - `long` integer format does not support beyond the Fibbonaci series length of 92 or the 93<sup>nd</sup>number of the series - `7540113804746346429`
 
 <hr>
